@@ -1,0 +1,165 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="uk-modal" id="new_task">
+     <div class="uk-modal-dialog">
+         <div class="uk-modal-header">
+             <h4 class="uk-modal-title">Send sms  here</h4>
+         </div>
+         <form action="{!! url('/fireOwingSMS')!!}" method="POST">
+             <input type="hidden" name="_token" value="{!! csrf_token() !!}"> 
+
+
+             <textarea cols="30" rows="4" name="message"class="md-input" required=""></textarea>
+
+
+             <div class="uk-modal-footer uk-text-right">
+                 <button type="submit" class="md-btn md-btn-flat md-btn-flat-primary md-btn-wave" id="snippet_new_save"><i   class="material-icons"   >smartphone</i>Send</button>    
+                 <button type="button" class="md-btn md-btn-flat uk-modal-close md-btn-wave">Close</button>
+             </div>
+         </form>
+     </div>
+ </div>
+    <div style="">
+     <div class="uk-margin-bottom" style="margin-left:1021px" >
+         <a  href="#new_task" data-uk-modal="{ center:true }"> <i title="click to send sms to students owing"   class="material-icons md-36 uk-text-success"   >phonelink_ring message</i></a>
+
+         <a href="#" class="md-btn md-btn-small md-btn-success uk-margin-right" id="printTable">Print Table</a>
+         <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+             <button class="md-btn md-btn-small md-btn-success"> columns <i class="uk-icon-caret-down"></i></button>
+             <div class="uk-dropdown">
+                 <ul class="uk-nav uk-nav-dropdown" id="columnSelector"></ul>
+             </div>
+         </div>
+     </div>
+ </div>
+    <div class="uk-width-xLarge-1-1">
+        <div class="md-card">
+            <div class="md-card-content">
+
+                <h5>Student list</h5>
+
+                <div class="uk-overflow-container" id='print'>
+         <center><span class="uk-text-success uk-text-bold">99 Records</span></center>
+                <table class="uk-table uk-table-hover uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair" id="ts_pager_filter"> 
+     
+                <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Firstname</th>
+                            <th>Surname</th>
+                            <th>Fullname</th>
+                            <th>Dob</th>
+                            <th>Title</th>
+                            <th>Gender</th>
+                            <th>Indexno</th>
+                            <th>Age</th>
+                            <th>Othernames</th>
+                            <th>Studenttype</th>
+                            <th>Status</th>
+                            <th>Classadmitted</th>
+                            <th>Currentclass</th>
+                            <th>Waecindexno</th>
+                            <th>Hometown</th>
+                            <th>Address</th>
+                            <th>Region</th>
+                            <th>Phone</th>
+                            <th>Formerschool</th>
+                            <th>Programme</th>
+                            <th>House</th>
+                            <th>Nationality</th>
+
+                            <th>Parentname</th>
+                            <th>Parentaddress</th>
+                            <th>Parentphone</th>
+                            <th>Parentemail</th>
+                            <th>Studentliveswith</th>
+                            <th>Schoolarship</th>
+                            <th>Subjectcombination</th>
+                            <th>Yeargroup</th>
+                            <th>Issues</th>
+                            <th>Termbill</th>
+                            <th>Ptaowing</th>
+                            <th>Academicbillowing</th>
+                            <th>Disabilty</th>
+                            <th>Residencestatus</th>
+                            <th>Religion</th>
+                            <th>Bloodgroup</th>
+                            <th>Sickling</th>
+                            <th>Nhisno</th>
+                            <th>Dateadded</th>
+                            <th>Parentoccupation</th>
+                            <th>Email</th>
+                            <th>Boardingowing</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <td><a href="{{ path('student_show', { 'id': student.id }) }}">{{ student.id }}</a></td>
+                                <td>{{ student.firstName }}</td>
+                                <td>{{ student.surname }}</td>
+                                <td>{{ student.fullName }}</td>
+                                <td>{{ student.dob }}</td>
+                                <td>{{ student.title }}</td>
+                                <td>{{ student.gender }}</td>
+                                <td>{{ student.indexNo }}</td>
+                                <td>{{ student.age }}</td>
+                                <td>{{ student.othernames }}</td>
+                                <td>{{ student.studentType }}</td>
+                                <td>{{ student.status }}</td>
+                                <td>{{ student.classAdmitted }}</td>
+                                <td>{{ student.currentClass }}</td>
+                                <td>{{ student.waecIndexNo }}</td>
+                                <td>{{ student.hometown }}</td>
+                                <td>{{ student.address }}</td>
+                                <td>{{ student.region }}</td>
+                                <td>{{ student.phone }}</td>
+                                <td>{{ student.formerSchool }}</td>
+                                <td>{{ student.programme }}</td>
+                                <td>{{ student.house }}</td>
+                                <td>{{ student.nationality }}</td>
+                                <td>{{ student.dateAdmitted }}</td>
+                                <td>{{ student.parentName }}</td>
+                                <td>{{ student.parentAddress }}</td>
+                                <td>{{ student.parentPhone }}</td>
+                                <td>{{ student.parentEmail }}</td>
+                                <td>{{ student.studentLivesWith }}</td>
+                                <td>{{ student.schoolarship }}</td>
+                                <td>{{ student.subjectCombination }}</td>
+                                <td>{{ student.yearGroup }}</td>
+                                <td>{{ student.issues }}</td>
+                                <td>{{ student.termBill }}</td>
+                                <td>{{ student.ptaOwing }}</td>
+                                <td>{{ student.academicBillOwing }}</td>
+                                <td>{{ student.disabilty }}</td>
+                                <td>{{ student.residenceStatus }}</td>
+                                <td>{{ student.religion }}</td>
+                                <td>{{ student.bloodGroup }}</td>
+                                <td>{{ student.sickling }}</td>
+                                <td>{{ student.nhisNo }}</td>
+                                <td>{{ student.parentOccupation }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.boardingOwing }}</td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('student_show', { 'id': student.id }) }}">show</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('student_edit', { 'id': student.id }) }}">edit</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

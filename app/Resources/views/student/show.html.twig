@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Student</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ student.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ student.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ student.surname }}</td>
+            </tr>
+            <tr>
+                <th>Fullname</th>
+                <td>{{ student.fullName }}</td>
+            </tr>
+            <tr>
+                <th>Dob</th>
+                <td>{{ student.dob }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ student.title }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ student.gender }}</td>
+            </tr>
+            <tr>
+                <th>Indexno</th>
+                <td>{{ student.indexNo }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ student.age }}</td>
+            </tr>
+            <tr>
+                <th>Othernames</th>
+                <td>{{ student.othernames }}</td>
+            </tr>
+            <tr>
+                <th>Studenttype</th>
+                <td>{{ student.studentType }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ student.status }}</td>
+            </tr>
+            <tr>
+                <th>Classadmitted</th>
+                <td>{{ student.classAdmitted }}</td>
+            </tr>
+            <tr>
+                <th>Currentclass</th>
+                <td>{{ student.currentClass }}</td>
+            </tr>
+            <tr>
+                <th>Waecindexno</th>
+                <td>{{ student.waecIndexNo }}</td>
+            </tr>
+            <tr>
+                <th>Hometown</th>
+                <td>{{ student.hometown }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ student.address }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ student.region }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ student.phone }}</td>
+            </tr>
+            <tr>
+                <th>Formerschool</th>
+                <td>{{ student.formerSchool }}</td>
+            </tr>
+            <tr>
+                <th>Programme</th>
+                <td>{{ student.programme }}</td>
+            </tr>
+            <tr>
+                <th>House</th>
+                <td>{{ student.house }}</td>
+            </tr>
+            <tr>
+                <th>Nationality</th>
+                <td>{{ student.nationality }}</td>
+            </tr>
+            <tr>
+                <th>Dateadmitted</th>
+                <td>{{ student.dateAdmitted }}</td>
+            </tr>
+            <tr>
+                <th>Parentname</th>
+                <td>{{ student.parentName }}</td>
+            </tr>
+            <tr>
+                <th>Parentaddress</th>
+                <td>{{ student.parentAddress }}</td>
+            </tr>
+            <tr>
+                <th>Parentphone</th>
+                <td>{{ student.parentPhone }}</td>
+            </tr>
+            <tr>
+                <th>Parentemail</th>
+                <td>{{ student.parentEmail }}</td>
+            </tr>
+            <tr>
+                <th>Studentliveswith</th>
+                <td>{{ student.studentLivesWith }}</td>
+            </tr>
+            <tr>
+                <th>Schoolarship</th>
+                <td>{{ student.schoolarship }}</td>
+            </tr>
+            <tr>
+                <th>Subjectcombination</th>
+                <td>{{ student.subjectCombination }}</td>
+            </tr>
+            <tr>
+                <th>Yeargroup</th>
+                <td>{{ student.yearGroup }}</td>
+            </tr>
+            <tr>
+                <th>Issues</th>
+                <td>{{ student.issues }}</td>
+            </tr>
+            <tr>
+                <th>Termbill</th>
+                <td>{{ student.termBill }}</td>
+            </tr>
+            <tr>
+                <th>Ptaowing</th>
+                <td>{{ student.ptaOwing }}</td>
+            </tr>
+            <tr>
+                <th>Academicbillowing</th>
+                <td>{{ student.academicBillOwing }}</td>
+            </tr>
+            <tr>
+                <th>Disabilty</th>
+                <td>{{ student.disabilty }}</td>
+            </tr>
+            <tr>
+                <th>Residencestatus</th>
+                <td>{{ student.residenceStatus }}</td>
+            </tr>
+            <tr>
+                <th>Religion</th>
+                <td>{{ student.religion }}</td>
+            </tr>
+            <tr>
+                <th>Bloodgroup</th>
+                <td>{{ student.bloodGroup }}</td>
+            </tr>
+            <tr>
+                <th>Sickling</th>
+                <td>{{ student.sickling }}</td>
+            </tr>
+            <tr>
+                <th>Nhisno</th>
+                <td>{{ student.nhisNo }}</td>
+            </tr>
+             
+            <tr>
+                <th>Parentoccupation</th>
+                <td>{{ student.parentOccupation }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ student.email }}</td>
+            </tr>
+            <tr>
+                <th>Boardingowing</th>
+                <td>{{ student.boardingOwing }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('student_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('student_edit', { 'id': student.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
