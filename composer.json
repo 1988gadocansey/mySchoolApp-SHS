@@ -30,7 +30,12 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "sg/datatablesbundle": "dev-master"
+        "sg/datatablesbundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "apy/datagrid-bundle": "^2.2",
+        "phpoffice/phpexcel": "dev-develop",
+        "wisembly/excelant": "*"
+        
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

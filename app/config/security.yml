@@ -16,10 +16,35 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+                # login success redirecting options (read further below)
+                always_use_default_target_path: true
+                default_target_path: /student
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
-
+            remember_me:
+                user_provider: fos_userbundle
+                secret: "%secret%"
+                name: shalomAcademy
+                lifetime: 3600 # in seconds
+                path: /
+                domain: localhost
+                secure: false
+                httponly: true
+                always_remember_me: false
+                remember_me_parameter: _remember_me 
             logout:       true
+            logout:
+                path:   /logout
+                target: /login
+                invalidate_session: true
+                csrf_parameter:       _csrf_token
+                csrf_token_generator:  ~
+                csrf_token_id:        logout
+                delete_cookies:
+                    a: { path: null, domain: null }
+                    b: { path: null, domain: null }
+                 
+            anonymous: ~
             anonymous:    true
 
     access_control:

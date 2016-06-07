@@ -23,19 +23,20 @@
     <link rel="stylesheet" href="{{ asset('datatables/css/jquery.dataTables.min.css')}}" media="all"/>
     <link rel="stylesheet" href="{{ asset('datatables/css/dataTables.uikit.min.css')}}" media="all"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    
   
   {% endblock %}
  
 </head>
     <body class="top_menu">
+        
         {% block header %}
              <header id="header_main">
         <div class="header_main_content">
             <nav class="uk-navbar">
                                     <div class="main_logo_top">
                                         <a href="/dashboard"><img  src="{{ asset('assets/img/logo.png') }}" alt="" height="15" width="71"/></a>
-                                        <span  style="color:white"  >Shalom Academy High School  | Mr Ocansey</span>
+                                        <span  style="color:white"  >SRMS  | Shalom Academy</span>
                                     </div>
                                 
                 <!-- secondary sidebar switch -->
@@ -181,30 +182,24 @@
                 <a href="#"><i class="sidebar-menu-icon material-icons md-18">school</i><span>Administration Module</span></a>
                 <div class="uk-dropdown uk-dropdown-scrollable">
                     <ul class="uk-nav uk-nav-dropdown">
+                        <li><a href=''>Setup School</a></li>
+                         <li><a href=''>Admit students</a></li>
+                        <li><a href="{{path('student_index') }}">Students</a></li>
+                          <li><a href="{{path('student_new') }}">Add Students</a></li>
+                        <li><a href="">Create Programmes</a></li>
+                        <li><a href="">View Programmes</a></li>
+                        <li><a href="">Create Classes</a></li>
+                        <li><a href="">View Classes</a></li>
+                        <li><a href="">Create Class Teacher</a></li>
+                        <li><a href="">View Class Teacher</a></li>
+                        <li><a href="">Domentories</a></li>
+                        <li><a href="">Parents and Guildians</a></li>
+                        <li><a href="">Setup Timetable</a></li>
+                        <li><a href="">Mark Attendance</a></li>
+                        <li><a href="">Setup Subjects</a></li>
+                        <li><a href="">Setup Grading System</a></li>
+                        <li><a href="">Academic Calender</a></li>
                          
-                        <li><a href=''>Students</a></li>
-                        <li><a href=''>Add Students</a></li>
-                        <li><a href=''>Add Students</a></li>
-                     
-                        <li><a href="components_buttons.html"> Buttons</a></li>
-                        <li><a href="components_cards.html">Cards</a></li>
-                        <li><a href="components_colors.html">Colors</a></li>
-                        <li><a href="components_common.html">Common</a></li>
-                        <li><a href="components_dropdowns.html">Dropdowns</a></li>
-                        <li><a href="components_dynamic_grid.html">Dynamic Grid</a></li>
-                        <li><a href="components_grid.html">Grid</a></li>
-                        <li><a href="components_icons.html">Icons</a></li>
-                        <li><a href="components_modal.html">Lightbox/Modal</a></li>
-                        <li><a href="components_lists.html">Lists</a></li>
-                        <li><a href="components_nestable.html">Nestable</a></li>
-                        <li><a href="components_notifications.html">Notifications</a></li>
-                        <li><a href="components_preloaders.html">Preloaders</a></li>
-                        <li><a href="components_sortable.html">Sortable</a></li>
-                        <li><a href="components_tables.html">Tables</a></li>
-                        <li><a href="components_tables_examples.html">Tables Examples</a></li>
-                        <li><a href="components_tabs.html">Tabs</a></li>
-                        <li><a href="components_tooltips.html">Tooltips</a></li>
-                        <li><a href="components_typography.html">Typography</a></li>
                     </ul>
                 </div>
             </li>
@@ -237,7 +232,7 @@
             </li>
             
              <li data-uk-dropdown class="uk-hidden-small">
-                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>Finance Module</span></a>
+                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>Bursary Module</span></a>
                 <div class="uk-dropdown uk-dropdown-scrollable">
                     <ul class="uk-nav uk-nav-dropdown">
                         <li><a href=''>Create Banks</a></li>
@@ -248,7 +243,7 @@
             </li>
              
                <li data-uk-dropdown class="uk-hidden-small">
-                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>HR Module</span></a>
+                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>Staff Module</span></a>
                 <div class="uk-dropdown uk-dropdown-scrollable">
                     <ul class="uk-nav uk-nav-dropdown">
                         <li><a href="components_accordion.html">Accordions</a></li>
@@ -275,7 +270,7 @@
                 </div>
             </li>
                <li data-uk-dropdown class="uk-hidden-small">
-                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>Laiason Module</span></a>
+                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>Events</span></a>
                 <div class="uk-dropdown uk-dropdown-scrollable">
                     <ul class="uk-nav uk-nav-dropdown">
                         <li><a href="components_accordion.html">Accordions</a></li>
@@ -302,29 +297,14 @@
                 </div>
             </li>
                <li data-uk-dropdown class="uk-hidden-small">
-                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>Users</span></a>
+                <a href="#"> <i class="sidebar-menu-icon material-icons">work</i><span>System Admin</span></a>
                 <div class="uk-dropdown uk-dropdown-scrollable">
                     <ul class="uk-nav uk-nav-dropdown">
-                        <li><a href="components_accordion.html">Accordions</a></li>
-                        <li><a href="components_buttons.html"> Buttons</a></li>
-                        <li><a href="components_cards.html">Cards</a></li>
-                        <li><a href="components_colors.html">Colors</a></li>
-                        <li><a href="components_common.html">Common</a></li>
-                        <li><a href="components_dropdowns.html">Dropdowns</a></li>
-                        <li><a href="components_dynamic_grid.html">Dynamic Grid</a></li>
-                        <li><a href="components_grid.html">Grid</a></li>
-                        <li><a href="components_icons.html">Icons</a></li>
-                        <li><a href="components_modal.html">Lightbox/Modal</a></li>
-                        <li><a href="components_lists.html">Lists</a></li>
-                        <li><a href="components_nestable.html">Nestable</a></li>
-                        <li><a href="components_notifications.html">Notifications</a></li>
-                        <li><a href="components_preloaders.html">Preloaders</a></li>
-                        <li><a href="components_sortable.html">Sortable</a></li>
-                        <li><a href="components_tables.html">Tables</a></li>
-                        <li><a href="components_tables_examples.html">Tables Examples</a></li>
-                        <li><a href="components_tabs.html">Tabs</a></li>
-                        <li><a href="components_tooltips.html">Tooltips</a></li>
-                        <li><a href="components_typography.html">Typography</a></li>
+                         <li><a href="{{path('student_index') }}">SMS Configurations</a></li>
+                         <li><a href="{{path('student_index') }}">Database Backup</a></li>
+                        <li><a href="{{path('student_index') }}">Languages</a></li>
+                        <li><a href="{{path('student_index') }}">General Settings</a></li>
+                        
                     </ul>
                 </div>
             </li>
@@ -386,10 +366,10 @@
          <script src="{{ asset('assets/plugins/tablesorter/dist/js/widgets/widget-columnSelector.min.js')}}"></script>
          <script src="{{ asset('assets/plugins/tablesorter/dist/js/widgets/widget-print.min.js')}}"></script>
          <script src="{{ asset('assets/js/pages/plugins_tablesorter.min.js')}}"></script>
+         <!--<script src="{{ asset('assets/plugins/datatables-colvis/js/dataTables.colVis.js')}}"></script>
+         <script src="{{ asset('assets/plugins/datatables-tabletools/js/dataTables.tableTools.js')}}"></script> -->
 
-      
-         
-      
+
    
      <script language="javascript" type="text/javascript">
       

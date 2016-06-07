@@ -924,7 +924,9 @@ $url = self::getRelativePath($this->context->getPathInfo(), $url);
 } else {
 $url = $schemeAuthority.$this->context->getBaseUrl().$url;
 }
-$extra = array_diff_key($parameters, $variables, $defaults);
+$extra = array_udiff_assoc(array_diff_key($parameters, $variables), $defaults, function ($a, $b) {
+return $a == $b ? 0 : 1;
+});
 if ($extra && $query = http_build_query($extra,'','&')) {
 $url .='?'.strtr($query, array('%2F'=>'/'));
 }
@@ -1748,10 +1750,10 @@ $this->removeListener($eventName, array($subscriber, is_string($params) ? $param
 protected function doDispatch($listeners, $eventName, Event $event)
 {
 foreach ($listeners as $listener) {
-call_user_func($listener, $event, $eventName, $this);
 if ($event->isPropagationStopped()) {
 break;
 }
+call_user_func($listener, $event, $eventName, $this);
 }
 }
 private function sortListeners($eventName)
@@ -2387,6 +2389,7 @@ return $bundleName;
 $lev = levenshtein($nonExistentBundleName, $bundleName);
 if ($lev <= strlen($nonExistentBundleName) / 3 && ($alternative === null || $lev < $shortest)) {
 $alternative = $bundleName;
+$shortest = $lev;
 }
 }
 return $alternative;
@@ -2428,6 +2431,9 @@ return parent::createController($controller);
 }
 protected function instantiateController($class)
 {
+if ($this->container->has($class)) {
+return $this->container->get($class);
+}
 $controller = parent::instantiateController($class);
 if ($controller instanceof ContainerAwareInterface) {
 $controller->setContainer($this->container);
@@ -2934,7 +2940,7 @@ namespace
 {
 class Twig_Environment
 {
-const VERSION ='1.24.0';
+const VERSION ='1.24.1';
 protected $charset;
 protected $loader;
 protected $debug;
@@ -3130,6 +3136,9 @@ $this->setLoader($loader);
 try {
 $template = $this->loadTemplate($name);
 } catch (Exception $e) {
+$this->setLoader($current);
+throw $e;
+} catch (Throwable $e) {
 $this->setLoader($current);
 throw $e;
 }
@@ -4781,6 +4790,11 @@ while (ob_get_level() > $level) {
 ob_end_clean();
 }
 throw $e;
+} catch (Throwable $e) {
+while (ob_get_level() > $level) {
+ob_end_clean();
+}
+throw $e;
 }
 return ob_get_clean();
 }
@@ -4913,7 +4927,7 @@ return false;
 if ($ignoreStrictCheck || !$this->env->isStrictVariables()) {
 return;
 }
-throw new Twig_Error_Runtime(sprintf('Method "%s" for object "%s" does not exist', $item, get_class($object)), -1, $this->getTemplateName());
+throw new Twig_Error_Runtime(sprintf('Neither the property "%1$s" nor one of the methods "%1$s()", "get%1$s()"/"is%1$s()" or "__call()" exist and have public access in class "%2$s"', $item, get_class($object)), -1, $this->getTemplateName());
 }
 if ($isDefinedTest) {
 return true;

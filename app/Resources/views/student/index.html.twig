@@ -40,17 +40,18 @@
                 <h5>Student list</h5>
 
                 <div class="uk-overflow-container" id='print'>
-         <center><span class="uk-text-success uk-text-bold">99 Records</span></center>
+         <center><span class="uk-text-success uk-text-bold">{{ pagination.getTotalItemCount }} Record(s)</span></center>
                 <table class="uk-table uk-table-hover uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair" id="ts_pager_filter"> 
      
                 <thead>
                         <tr>
                             <th>Id</th>
+                             <th>photo</th>
                             <th>Firstname</th>
                             <th>Surname</th>
                             <th>Fullname</th>
                             <th>Dob</th>
-                            <th>Title</th>
+                            <th>{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'a.title')|raw }}</th>
                             <th>Gender</th>
                             <th>Indexno</th>
                             <th>Age</th>
@@ -95,9 +96,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for student in students %}
+                        {% for student in pagination %}
                             <tr>
                                 <td><a href="{{ path('student_show', { 'id': student.id }) }}">{{ student.id }}</a></td>
+                               
+                                 <td> <img class="md-user-image-large" style="" src='{{ asset('albums/students/07130252.JPG') }} 'alt=" Picture of Student Here"    /></td>
+                                         
                                 <td>{{ student.firstName }}</td>
                                 <td>{{ student.surname }}</td>
                                 <td>{{ student.fullName }}</td>
@@ -156,7 +160,10 @@
                         {% endfor %}
                     </tbody>
                 </table>
-
+                {# display navigation #}
+                
+                    {{ knp_pagination_render(pagination) }}
+                
                 </div>
             </div>
         </div>

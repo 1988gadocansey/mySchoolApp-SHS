@@ -11,3 +11,5 @@ fos_js_routing:
 datatable:
     resource: "@SgDatatablesBundle/Controller/"
     type:     annotation
+
+ 

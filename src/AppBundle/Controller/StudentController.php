@@ -22,14 +22,18 @@ class StudentController extends Controller
      * @Route("/", name="student_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $students = $em->getRepository('AppBundle:Student')->findAll();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $students, /* query NOT result */ $request->query->getInt('page', 1)/* page number */, 5/* limit per page */
+        );
 
         return $this->render('student/index.html.twig', array(
-            'students' => $students,
+                    'pagination' => $pagination,
         ));
     }
 

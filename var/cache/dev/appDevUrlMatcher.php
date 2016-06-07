@@ -100,15 +100,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
-            }
-
-            return array (  '_controller' => 'AppBundle\\Controller\\PageController::homeAction',  '_route' => 'homepage',);
-        }
-
         if (0 === strpos($pathinfo, '/post')) {
             // post_bulk_delete
             if ($pathinfo === '/post/bulk/delete') {

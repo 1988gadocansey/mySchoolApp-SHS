@@ -2,15 +2,24 @@
 
 {% block body %}
     <h1>Student creation</h1>
+    <div class="uk-width-xLarge-1-1">
+        <div class="md-card">
+            <div class="md-card-content">
+                {{ form_start(form) }}
+                <div class="uk-width-medium-1-2">
+                                         
+                {{ form_widget(form) }}
+                </div>
+                
+                <input type="submit" class="md-btn md-btn-success" value="Create" />
+                {{ form_end(form) }}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('student_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                <ul>
+                    <li>
+                        <a href="{{ path('student_index') }}">Back to the list</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}
